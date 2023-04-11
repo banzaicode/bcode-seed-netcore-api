@@ -1,0 +1,1 @@
+# bcode-seed-netcore-api
