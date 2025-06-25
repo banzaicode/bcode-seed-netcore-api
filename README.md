@@ -50,3 +50,22 @@ curl -k https://localhost:5001/weatherforecast
 
 You should receive a JSON array containing the forecast data.
 
+
+## Docker
+
+This repository includes a `Dockerfile` for building and running the API in a container.
+
+Build the image using:
+
+```bash
+docker build -t bcode-seed-api .
+```
+
+Run the container with:
+
+```bash
+docker run -p 8080:8080 bcode-seed-api
+```
+
+The API will then be reachable at `http://localhost:8080` with Swagger UI available at `http://localhost:8080/swagger`.
+
