@@ -28,3 +28,5 @@ app.Map("/error", () => Results.Problem())
    .ExcludeFromDescription();
 
 app.Run();
+
+public partial class Program { }

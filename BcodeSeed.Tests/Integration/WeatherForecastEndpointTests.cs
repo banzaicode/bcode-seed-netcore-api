@@ -9,7 +9,7 @@ public class WeatherForecastEndpointTests
     [Fact]
     public async Task Get_ReturnsSuccess()
     {
-        await using var factory = new WebApplicationFactory<BcodeSeed.Api.Program>();
+        await using var factory = new WebApplicationFactory<Program>();
         var client = factory.CreateClient();
         var response = await client.GetAsync("/weatherforecast");
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
