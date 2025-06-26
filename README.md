@@ -34,11 +34,13 @@ By default the API listens on `https://localhost:5001` (and `http://localhost:50
 
 ## Testing
 
-This seed does not include automated tests. Running the following command will execute any tests you add in the future:
+This repository already includes a small xUnit test project located in `BcodeSeed.Tests`. Run the tests with:
 
 ```bash
 dotnet test
 ```
+
+For an example of the testing approach, see the sample `WeatherForecastControllerTests` under `BcodeSeed.Tests/UnitTests`.
 
 ## Getting Started
 
