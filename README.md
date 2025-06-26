@@ -51,6 +51,7 @@ dotnet test
 ```
 
 For an example of the testing approach, see the sample `WeatherForecastControllerTests` under `BcodeSeed.Tests/UnitTests`.
+An additional integration test `WeatherForecastEndpointTests` located in `BcodeSeed.Tests/Integration` verifies that the `/weatherforecast` endpoint responds with HTTP `200`.
 
 ## Getting Started
 
