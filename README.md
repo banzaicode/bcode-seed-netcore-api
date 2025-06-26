@@ -36,6 +36,12 @@ ASP.NET Core automatically loads configuration from `appsettings.json` and an
 environment-specific file like `appsettings.Development.json` based on the value
 of the `ASPNETCORE_ENVIRONMENT` environment variable.
 
+## Error Handling
+
+Unhandled exceptions are routed to a dedicated `/error` endpoint by
+`app.UseExceptionHandler("/error")`. The endpoint returns an RFC 7807
+problem response, ensuring clients receive consistent JSON error details.
+
 ## Testing
 
 This repository already includes a small xUnit test project located in `BcodeSeed.Tests`. Run the tests with:
