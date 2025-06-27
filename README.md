@@ -82,3 +82,13 @@ docker run -p 8080:8080 bcode-seed-api
 
 The API will then be reachable at `http://localhost:8080` with Swagger UI available at `http://localhost:8080/swagger`.
 
+
+## Docker Compose
+
+A `docker-compose.yml` is provided to run the API together with a PostgreSQL database. Start the full stack with:
+
+```bash
+docker compose up
+```
+
+The API will be available at `http://localhost:8080` and the database will listen on port `5432`.
