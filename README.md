@@ -32,6 +32,23 @@ dotnet run --project BcodeSeed.Api
 
 By default the API listens on `https://localhost:5001` (and `http://localhost:5000`). Swagger UI will be available at `https://localhost:5001/swagger`.
 
+### Configuring the Listening Port
+
+You can override the port by setting the `Urls` configuration value or the `PORT` environment variable. For example:
+
+```bash
+export PORT=8080
+dotnet run --project BcodeSeed.Api
+```
+
+Alternatively, edit `appsettings.json` and change the `Urls` setting:
+
+```json
+{
+  "Urls": "http://localhost:8080"
+}
+```
+
 ASP.NET Core automatically loads configuration from `appsettings.json` and an
 environment-specific file like `appsettings.Development.json` based on the value
 of the `ASPNETCORE_ENVIRONMENT` environment variable.
