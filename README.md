@@ -30,7 +30,7 @@ Start the API locally using:
 dotnet run --project BcodeSeed.Api
 ```
 
-By default the API listens on `https://localhost:5001` (and `http://localhost:5000`). Swagger UI will be available at `https://localhost:5001/swagger`.
+By default the API listens on `http://localhost:5000`. Swagger UI will be available at `http://localhost:5000/swagger`.
 
 ### Configuring the Listening Port
 
@@ -75,7 +75,7 @@ An additional integration test `WeatherForecastEndpointTests` located in `BcodeS
 Once the application is running, you can query the sample endpoint. The example below retrieves five random weather forecasts:
 
 ```bash
-curl -k https://localhost:5001/weatherforecast
+curl http://localhost:5000/weatherforecast
 ```
 
 You should receive a JSON array containing the forecast data.
