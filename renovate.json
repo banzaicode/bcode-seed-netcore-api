@@ -8,7 +8,7 @@
       "description": "limit dotnet docker images to stable LTS releases",
       "matchManagers": ["dockerfile"],
       "matchPackagePatterns": ["^mcr.microsoft.com/dotnet/"] ,
-      "allowedTags": "/^8\\./"
+      "allowedVersions": "/^8\\./"
     },
     {
       "description": "limit Microsoft.AspNetCore dependencies to LTS version",
