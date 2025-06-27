@@ -94,18 +94,34 @@ docker build -t bcode-seed-api .
 Run the container with:
 
 ```bash
-docker run -p 8080:8080 bcode-seed-api
+docker run -e PORT=8080 -p 8080:8080 bcode-seed-api
 ```
 
-The API will then be reachable at `http://localhost:8080` with Swagger UI available at `http://localhost:8080/swagger`.
+The `PORT` environment variable controls which port the application listens on inside the container. The API will then be reachable at `http://localhost:8080` with Swagger UI available at `http://localhost:8080/swagger`.
+
+Any other port can be chosen by setting `PORT` to a different value and adjusting the host mapping passed to `-p`.
 
 
 ## Docker Compose
 
-A `docker-compose.yml` is provided to run the API together with a PostgreSQL database. Start the full stack with:
+`docker-compose.yml` can run the API together with a PostgreSQL database. Add the `PORT` environment variable to the `api` service so the internal port matches the exposed one:
+
+```yaml
+services:
+  api:
+    build: .
+    environment:
+      - PORT=8080
+    ports:
+      - "8080:8080"
+  db:
+    # ...
+```
+
+Start the full stack with:
 
 ```bash
 docker compose up
 ```
 
-The API will be available at `http://localhost:8080` and the database will listen on port `5432`.
+The API will be available at `http://localhost:8080` and the database will listen on port `5432`. Ensure the port mapping matches the `PORT` value. Any port can be used by changing both the `PORT` value and host mapping.
