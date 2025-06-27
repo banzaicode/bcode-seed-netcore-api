@@ -28,7 +28,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+var hasHttps = urls?.Split(';', StringSplitOptions.RemoveEmptyEntries)
+                   .Any(u => u.StartsWith("https://", StringComparison.OrdinalIgnoreCase)) ?? false;
+if (hasHttps)
+{
+    app.UseHttpsRedirection();
+}
 
 app.UseAuthorization();
 
