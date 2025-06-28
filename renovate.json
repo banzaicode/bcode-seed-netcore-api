@@ -6,15 +6,24 @@
   "packageRules": [
     {
       "description": "limit dotnet docker images to stable LTS releases",
-      "matchManagers": ["dockerfile"],
-      "matchPackagePatterns": ["^mcr.microsoft.com/dotnet/"] ,
-      "allowedVersions": "/^8\\./"
+      "matchManagers": [
+        "dockerfile"
+      ],
+      "allowedVersions": "/^8\\./",
+      "matchPackageNames": [
+        "/^mcr.microsoft.com/dotnet//"
+      ]
     },
     {
       "description": "limit Microsoft.AspNetCore dependencies to LTS version",
-      "matchManagers": ["nuget"],
-      "matchPackagePrefixes": ["Microsoft.AspNetCore", "Microsoft.NETCore"],
-      "allowedVersions": "/^8\\./"
+      "matchManagers": [
+        "nuget"
+      ],
+      "allowedVersions": "/^8\\./",
+      "matchPackageNames": [
+        "Microsoft.AspNetCore{/,}**",
+        "Microsoft.NETCore{/,}**"
+      ]
     }
   ]
 }
