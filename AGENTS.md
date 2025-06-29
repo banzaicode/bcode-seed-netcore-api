@@ -17,6 +17,7 @@ Este repositorio es una API RESTful en .NET 8 que sirve como plantilla base para
 
 ## Estructura del proyecto
 
+```console
 bcode-seed-netcore-api/
 │
 ├── src/                          # Código fuente de la aplicación
@@ -48,6 +49,7 @@ bcode-seed-netcore-api/
 ├── AGENTS.md                    # Archivo de reglas y directivas para IA y desarrolladores
 ├── README.md
 └── bcode-seed-netcore-api.sln  # Solución de Visual Studio
+```
 
 ---
 
@@ -80,11 +82,48 @@ bcode-seed-netcore-api/
 
 ---
 
+## 📘 README.md del proyecto
+
+El archivo `README.md` debe mantenerse siempre actualizado automáticamente o manualmente con cada nueva funcionalidad agregada.
+
+### Estructura esperada del README:
+
+1. **Resumen general del proyecto** (como se encuentra actualmente).
+2. **Tecnologías utilizadas**.
+3. **Estructura del repositorio**.
+4. **Guía para desarrolladores**:
+   - Cómo iniciar el proyecto.
+   - Requisitos previos.
+   - Variables de entorno necesarias.
+   - Cómo ejecutar localmente, con Docker y Docker Compose.
+5. **Funcionalidades de la API**:
+   - Descripción por módulo o endpoint.
+   - Responsabilidades de cada handler.
+   - Validaciones esperadas.
+6. **Ejemplos de uso**:
+   - Cómo probar endpoints con `curl` o Postman.
+   - Posibles respuestas.
+
+---
+
+## 🚀 Despliegue y ejecución
+
+La API debe poder ejecutarse en cualquiera de las siguientes formas, siempre que aplique:
+
+- ✅ **Nativamente** (`dotnet run`) desde `src/`.
+- ✅ **Docker**: mediante un `Dockerfile` funcional y optimizado.
+- ✅ **Docker Compose**: si la API necesita servicios externos (por ejemplo, SQL Server, PostgreSQL, Redis, Kafka, etc.), deben estar definidos en un archivo `docker-compose.yml`.
+
+En caso de que la API agregue un nuevo componente que necesite soporte (como base de datos, cola de mensajes, etc.), **el `docker-compose.yml` debe actualizarse** para que la ejecución del proyecto siga funcionando de forma integral.
+
+---
+
 ## Agentes de IA
 
-- El **agente principal** se encarga de generar nuevos módulos, endpoints y handlers siguiendo las convenciones anteriores.
-- El **agente secundario** genera pruebas unitarias e integración para cada nuevo feature.
-- El **agente de documentación** mantiene actualizado el README y los comentarios XML.
+- El **agente principal** genera nuevos módulos completos (handlers, endpoints, validadores).
+- El **agente secundario** crea pruebas unitarias e integración para cada nuevo componente.
+- El **agente de documentación** actualiza el `README.md` con la descripción, ejemplos y despliegue de cada nueva funcionalidad.
+- Todos los agentes deben seguir las convenciones de estilo, estructura y arquitectura del proyecto.
 
 ---
 
@@ -94,6 +133,10 @@ bcode-seed-netcore-api/
 - Evitar la lógica en el endpoint; delegar al handler.
 - Toda excepción debe lanzar `ApiException` personalizada si es controlada.
 - Los endpoints deben devolver resultados tipados (`Results.Ok(...)`, `Results.NotFound(...)`, etc).
+- No exponer directamente las entidades de base de datos.
+- No sobrecargar clases (SRP): dividir si superan las 200 líneas.
+- Toda nueva funcionalidad debe venir con su correspondiente test.
+- Nunca dejar endpoints sin documentación o ejemplos de uso.
 
 ---
 
