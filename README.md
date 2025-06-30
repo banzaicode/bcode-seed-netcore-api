@@ -27,10 +27,10 @@ dotnet build
 Start the API locally using:
 
 ```bash
-dotnet run --project BcodeSeed.Api
+ASPNETCORE_ENVIRONMENT=Development dotnet run --project BcodeSeed.Api
 ```
 
-By default the API listens on `http://localhost:5000`. Swagger UI will be available at `http://localhost:5000/swagger`.
+By default the API listens on `http://localhost:5000`. Swagger UI is available at `http://localhost:5000/swagger` when `ASPNETCORE_ENVIRONMENT` is set to `Development`.
 
 ### Configuring the Listening Port
 
@@ -94,17 +94,17 @@ docker build -t bcode-seed-api .
 Run the container with:
 
 ```bash
-docker run -e PORT=8080 -p 8080:8080 bcode-seed-api
+docker run -e PORT=8080 -e ASPNETCORE_ENVIRONMENT=Development -p 8080:8080 bcode-seed-api
 ```
 
-The `PORT` environment variable controls which port the application listens on inside the container. The API will then be reachable at `http://localhost:8080` with Swagger UI available at `http://localhost:8080/swagger`.
+The `PORT` environment variable controls which port the application listens on inside the container. The API will then be reachable at `http://localhost:8080`. Set `ASPNETCORE_ENVIRONMENT=Development` to enable Swagger UI at `http://localhost:8080/swagger`.
 
 Any other port can be chosen by setting `PORT` to a different value and adjusting the host mapping passed to `-p`.
 
 
 ## Docker Compose
 
-`docker-compose.yml` can run the API together with a PostgreSQL database. Add the `PORT` environment variable to the `api` service so the internal port matches the exposed one:
+`docker-compose.yml` can run the API together with a PostgreSQL database. Add the `PORT` and `ASPNETCORE_ENVIRONMENT` variables to the `api` service so the internal port matches the exposed one and Swagger is enabled:
 
 ```yaml
 services:
@@ -112,6 +112,7 @@ services:
     build: .
     environment:
       - PORT=8080
+      - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "8080:8080"
   db:
@@ -124,4 +125,4 @@ Start the full stack with:
 docker compose up
 ```
 
-The API will be available at `http://localhost:8080` and the database will listen on port `5432`. Ensure the port mapping matches the `PORT` value. Any port can be used by changing both the `PORT` value and host mapping.
+The API will be available at `http://localhost:8080` and the database will listen on port `5432`. Set `ASPNETCORE_ENVIRONMENT=Development` so the `/swagger` endpoint is enabled. Ensure the port mapping matches the `PORT` value. Any port can be used by changing both the `PORT` value and host mapping.
